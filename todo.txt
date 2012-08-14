@@ -1,0 +1,21 @@
+
+<DEFCON-1> IMMEDIATE TODO:-
+
+****** Port all the Station data from the XML file into the sqlite database ******
+
+
+
+
+GENERAL BART TODO:-
+
+- Embed a Google Map in my homepage.
+- Have a Form to allow users to "select" a route.
+- Display that route on the map as Markers for the stations
+    and as Polylines(with proper color coding) to connect the stations.
+- When user hovers over a marker, in the infowindow, :-
+       - Display Station name.
+       - Display next train arrival time.
+       - Display next train departure time.
+
+- For the dynamic information about departure, arrival etc query the Real BART API.
+- Display all this data into the marker's info window.

@@ -1,0 +1,49 @@
+Google MAPS API key:
+ KEY: AIzaSyAS5Hph0cSW6AX_KuR-dqXowLjAlEXdEsA
+
+---------------
+BART API. Your key is: RRHP-6MUK-EEXT-7WIS
+
+--------------
+
+Usage
+
+http://api.bart.gov/api/etd.aspx?cmd=etd&orig=RICH&key=MW9S-E7SL-26DU-VV8V
+
+------------------
+RESULT :-->>
+
+<root>
+<uri>
+<![CDATA[ http://api.bart.gov/api/etd.aspx?cmd=etd&orig=RICH ]]>
+</uri>
+<date>07/13/2012</date>
+<time>11:07:38 PM PDT</time>
+<station>
+<name>Richmond</name>
+<abbr>RICH</abbr>
+<etd>
+<destination>Fremont</destination>
+<abbreviation>FRMT</abbreviation>
+<estimate>
+<minutes>7</minutes>
+<platform>2</platform>
+<direction>South</direction>
+<length>3</length>
+<color>ORANGE</color>
+<hexcolor>#ff9933</hexcolor>
+<bikeflag>1</bikeflag>
+</estimate>
+<estimate>
+<minutes>27</minutes>
+<platform>2</platform>
+<direction>South</direction>
+<length>3</length>
+<color>ORANGE</color>
+<hexcolor>#ff9933</hexcolor>
+<bikeflag>1</bikeflag>
+</estimate>
+</etd>
+</station>
+<message/>
+</root>

@@ -1,0 +1,2 @@
+GMAPS API key:
+ KEY: AIzaSyAS5Hph0cSW6AX_KuR-dqXowLjAlEXdEsA
