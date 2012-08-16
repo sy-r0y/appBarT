@@ -1,0 +1,1 @@
+A cool application that utillizes APIs provided by San Francisco's transit system Bay Area Rapid Transit(http://bart.gov/schedules/developers/) and mashes them up with a Google Map application.
