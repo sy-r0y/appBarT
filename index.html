@@ -3,7 +3,7 @@
 <head>
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
   <link rel="stylesheet" type="text/css" href="styles.css" />
-  <title>Demo BART-Google Map MAshUP</title>
+  <title>BART-GoogleMap MAshUP</title>
   <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
   <script>
     function init()
@@ -11,31 +11,26 @@
     var elem=document.getElementById('canvas_map');
     var latlng=new google.maps.LatLng(37.752254,-122.418466);
     var opt={zoom:13,
-      center:latlng,
-      mapTypeId:google.maps.MapTypeId.ROADMAP,
-      disableAutoPan:true,
-      navigationControl:true,
-      navigationControlOptions:{style:google.maps.NavigationControlStyle.small},
-      mapTypeControl:true
+             center:latlng,
+             mapTypeId:google.maps.MapTypeId.ROADMAP,
+             disableAutoPan:true,
+             navigationControl:true,
+             navigationControlOptions:{style:google.maps.NavigationControlStyle.small},
+             mapTypeControl:true
     };
     var map=new google.maps.Map(elem,opt);
-
     var mark1=new google.maps.LatLng(37.752254,-122.418466);
     var mark2=new google.maps.LatLng(37.765062,-122.419694);
     var mark3=new google.maps.LatLng(37.803664,-122.271604);
-
     var marker=new google.maps.Marker({position:mark1,title:'24th, Street Mission',map:map});
     var marker2=new google.maps.Marker({
                   position:mark2,
                   title:'16th, Street Mission',
-                  // clickable:false,
                   map:map
     });
-
     var marker3=new google.maps.Marker({
                   position:mark3,title:'as',map:map
     });
-
     var infowindow=new google.maps.InfoWindow({content:'24th, Street Mission, BART'});
     var infowindow2=new google.maps.InfoWindow({
                   content:'16th, Street Mission'
@@ -49,7 +44,6 @@
       strokeOpacity:1.0,
       strokeweight:2
     });
-
     path.setMap(map);
     google.maps.event.addListener(marker,'mouseover',function(){infowindow.open(map,marker);});
     google.maps.event.addListener(marker,'mouseout',function(){infowindow.close();});
