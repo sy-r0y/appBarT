@@ -1,6 +1,10 @@
 
 <DEFCON-1> IMMEDIATE TODO:-
 
+DEADLINE: 25th August
+
+FREEZE TIME: 30th August
+
 ****** Port all the Station data from the XML file into the sqlite database ******
 
 
