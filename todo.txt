@@ -1,11 +1,11 @@
 
 <DEFCON-1> IMMEDIATE TODO:-
 
-DEADLINE: 25th August
+DEADLINE: 20th August
 
-FREEZE TIME: 30th August
+CODE FREEZE: 22th August
 
-****** Port all the Station data from the XML file into the sqlite database ******
+****** Port all the Station data(static) from the XML file into the sqlite database ******
 
 
 
