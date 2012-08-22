@@ -1,10 +1,19 @@
 
+
+
+<DEFCON-3> NEXT TODO:-
+DEADLINE: 25th August
+CODE FREEZE: 27th August
+
+****** Implement all the UI elements(forms, dropdown menus, buttons) with proper styling ******
+   
+
+
+---------------------------------
+<<STATUS : DONE >>
 <DEFCON-1> IMMEDIATE TODO:-
-
 DEADLINE: 20th August
-
 CODE FREEZE: 22th August
-
 ****** Port all the Station data(static) from the XML file into the sqlite database ******
 
 
