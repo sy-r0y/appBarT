@@ -6,7 +6,7 @@
  *    table(routes, stations) of the sqlite3 database "bart.db".
  */
 
-$xml=new SimpleXMLElement('http://api.bart.gov/api/route.aspx?cmd=routeinfo&route=100&key=RRHP-6MUK-EEXT-7WIS',NULL,TRUE);
+/*$xml=new SimpleXMLElement('http://api.bart.gov/api/route.aspx?cmd=routeinfo&route=100&key=RRHP-6MUK-EEXT-7WIS',NULL,TRUE);
 
 $route= $xml->xpath('//route');
 $db=new SQLite3('bart.db');
@@ -24,7 +24,7 @@ foreach($route as $route)
 						    * my database table.
 						    * All that is needed is to insert the route id and the 
 						    * station id into the rtstn table.
-						    */
+
 	$stnid=$station["id"];
 
 	$db->exec("INSERT INTO rtstn(rtid,stnid) VALUES('{$number}','{$stnid}')");
@@ -33,8 +33,7 @@ foreach($route as $route)
     
 
   }
-
-
+*/
 
 /*echo "<pre>";
 print_r($route);
@@ -84,6 +83,4 @@ foreach($station as $station)
   }
 
 */
-
-
 ?>
