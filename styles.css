@@ -5,4 +5,5 @@
     body{height:100%;width:100%;margin-left:0;margin-right:0;}
     #wrapper{padding:1em;margin:1em;height:100%;width:90%;}
     #controls_wrapper{float:left;width:20%;height:100%;}
+    #controls p{margin-top:40%;font-size:1.1em;font-familt:sans-serif;}
     #canvas_map{float:right;height:80%;width:80%;}
