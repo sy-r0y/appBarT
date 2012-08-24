@@ -5,8 +5,8 @@
 DEADLINE: 25th August
 CODE FREEZE: 27th August
 
-****** Implement all the UI elements(forms, dropdown menus, buttons) with proper styling ******
-   
+****** Implement all the UI elements(DropDown menus) with proper styling ******
+
 
 
 ---------------------------------
