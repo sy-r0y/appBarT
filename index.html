@@ -53,12 +53,14 @@
     google.maps.event.addListener(marker2,'mouseout',function(){infowindow2.close();});
 }
 
-    function change(value){ 
 
-    /*    if(value==12){ alert("value=12");alert("asfdsadf");}
-          else { alert("value unknown");}
-    */
-
+    function getRoute(value){ 
+    /* Receive the route number from the user.
+     * Do sanity check.
+     * If pass, send the route number to getroute.php via an AJAX call.
+     * Receive the JSON response, parse it. 
+     * Add the station overlays onto the map.
+     * Change the center to the first station.
     }
 
   </script>
@@ -68,18 +70,18 @@
     <div align="center" id="controls_wrapper"><strong><p> A mashup b/w google maps and BART</p></strong>
       <div id="controls">
 	<p> Select a Route: </p>
-	<select id="routes" onchange="change(this.value);">
+	<select id="routes" onchange="getRoute(this.value);">
 	  <option value=""> --Select Route-- </option>
-	  <option value="1"> ROUTE1 </option>
-	  <option value="2"> ROUTE2 </option>
-	  <option value="3"> ROUTE3 </option>
-	  <option value="4"> ROUTE4 </option>
-	  <option value="5"> ROUTE5 </option>
-	  <option value="6"> ROUTE6 </option>
-	  <option value="7"> ROUTE7 </option>
-	  <option value="8"> ROUTE8 </option>
-	  <option value="11"> ROUTE11 </option>
-	  <option value="12"> ROUTE12 </option>
+	  <option value="1"> ROUTE 1 </option>
+	  <option value="2"> ROUTE 2 </option>
+	  <option value="3"> ROUTE 3 </option>
+	  <option value="4"> ROUTE 4 </option>
+	  <option value="5"> ROUTE 5 </option>
+	  <option value="6"> ROUTE 6 </option>
+	  <option value="7"> ROUTE 7 </option>
+	  <option value="8"> ROUTE 8 </option>
+	  <option value="11"> ROUTE 11 </option>
+	  <option value="12"> ROUTE 12 </option>
 	</select>
       </div>
     </div><br/>
