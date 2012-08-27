@@ -1,24 +1,4 @@
 
-
-
-<DEFCON-3> NEXT TODO:-
-DEADLINE: 25th August
-CODE FREEZE: 27th August
-
-****** Implement all the UI elements(DropDown menus) with proper styling ******
-
-
-
----------------------------------
-<<STATUS : DONE >>
-<DEFCON-1> IMMEDIATE TODO:-
-DEADLINE: 20th August
-CODE FREEZE: 22th August
-****** Port all the Station data(static) from the XML file into the sqlite database ******
-
-
-
-
 GENERAL BART TODO:-
 
 - Embed a Google Map in my homepage.
@@ -32,3 +12,28 @@ GENERAL BART TODO:-
 
 - For the dynamic information about departure, arrival etc query the Real BART API.
 - Display all this data into the marker's info window.
+
+---------------------------------
+
+<DEFCON-3> NEXT TODO:-
+****** Implement the getroute.php module to get the station information ******
+DEADLINE: 30th August
+CODE FREEZE: 31th August
+
+---------------------------------
+
+<<STATUS : DONE >>
+<DEFCON-3> NEXT TODO:-
+****** Implement all the UI elements(DropDown menus) with proper styling ******
+DEADLINE: 25th August
+CODE FREEZE: 27th August
+
+---------------------------------
+
+<<STATUS : DONE >>
+<DEFCON-1> IMMEDIATE TODO:-
+DEADLINE: 20th August
+CODE FREEZE: 22th August
+****** Port all the Station data(static) from the XML file into the sqlite database ******
+
+---------------------------------
