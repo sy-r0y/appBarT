@@ -53,19 +53,22 @@
     google.maps.event.addListener(marker2,'mouseout',function(){infowindow2.close();});
 }
 
-    function getRoute(value){ 
+    function getRoute(route){ 
     
     /* Receive the route number from the user.
      * Do sanity check.
-     * If pass, send the route number to getroute.php via an AJAX call.
+     * If pass, send the route number to getroute.php via an AJAX call(using jQuery).
      * Receive the JSON response, parse it. 
      * Add the station overlays onto the map.
      * Change the center to the first station.
     */
-    if(value==""){ return 0;}
+    if(route==""){ return false;}
 
-    //    alert("asfa");
+    //  alert("asfa - "+route);
 
+    
+    
+    
 
     
     
