@@ -53,14 +53,23 @@
     google.maps.event.addListener(marker2,'mouseout',function(){infowindow2.close();});
 }
 
-
     function getRoute(value){ 
+    
     /* Receive the route number from the user.
      * Do sanity check.
      * If pass, send the route number to getroute.php via an AJAX call.
      * Receive the JSON response, parse it. 
      * Add the station overlays onto the map.
      * Change the center to the first station.
+    */
+    if(value==""){ return 0;}
+
+    //    alert("asfa");
+
+
+    
+    
+
     }
 
   </script>
@@ -70,7 +79,7 @@
     <div align="center" id="controls_wrapper"><strong><p> A mashup b/w google maps and BART</p></strong>
       <div id="controls">
 	<p> Select a Route: </p>
-	<select id="routes" onchange="getRoute(this.value);">
+	<select id="routes" onchange="getRoute(this.value);return false;">
 	  <option value=""> --Select Route-- </option>
 	  <option value="1"> ROUTE 1 </option>
 	  <option value="2"> ROUTE 2 </option>
