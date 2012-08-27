@@ -32,8 +32,8 @@ CODE FREEZE: 27th August
 
 <<STATUS : DONE >>
 <DEFCON-1> IMMEDIATE TODO:-
+****** Port all the Station data(static) from the XML file into the sqlite database ******
 DEADLINE: 20th August
 CODE FREEZE: 22th August
-****** Port all the Station data(static) from the XML file into the sqlite database ******
 
 ---------------------------------
