@@ -7,7 +7,7 @@ A cool application that :-
 
 P.S:- Although I had the XML formatted Station & Route information(Station.xml,routes.xml) provided by BART, 
 I nonetheless ported all that data(using port.php) to a SQLite3 database(bart.db).
-      Q>Why did I do that extra thing?
+Q>Why did I do that extra thing?
       - Cause SQLite3 is cool and I wanted to learn it, and this this app was the best oppurtunity for me ^_^ !!
       - Doesn't require too much overhead.
       - Since the relevant data doesn't follow a tree structured model, all of the XPath stuff(with its easy querying) wasn't that neccessary.
