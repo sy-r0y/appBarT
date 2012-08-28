@@ -6,7 +6,7 @@
  *    table(routes, stations) of the sqlite3 database "bart.db".
  */
 
-/*$xml=new SimpleXMLElement('http://api.bart.gov/api/route.aspx?cmd=routeinfo&route=100&key=RRHP-6MUK-EEXT-7WIS',NULL,TRUE);
+/*$xml=new SimpleXMLElement('http://api.bart.gov/api/route.aspx?cmd=routeinfo&route=100&key=',NULL,TRUE);
 
 $route= $xml->xpath('//route');
 $db=new SQLite3('bart.db');
@@ -18,6 +18,7 @@ foreach($route as $route)
 	//	echo $number."  ".$station."<br/>";
 	$stmt=$db->prepare('SELECT id FROM stations WHERE abbr=:abbr');
 	$stmt->bindValue(':abbr',$station,SQLITE3_TEXT);
+
 	$result=$stmt->execute();
 	
 	$station=$result->fetchArray(SQLITE3_ASSOC); /* Now I've got the ID of the respective station from 
