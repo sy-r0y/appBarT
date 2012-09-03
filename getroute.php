@@ -6,48 +6,40 @@
  * Query bart.db
  * Don't ship Junk!!
  */
-
 class RouteInfo {
-  public $stnAbbr;
-  public $stnName;
-  public $rtColor;
-  public $stnLan;
-  public $stnLong;
-  public $noerror=false;
+  //public $noerror=false;
+  public $station=array();
+  public $route=array();
 }
-//header("Content-type:application/json");
-$route=mysql_real_escape_string($_GET['route']);
+$routeinfo=new RouteInfo();
 
+header("Content-type:application/json");
 $db=new SQLite3('bart.db');
+//$route=mysql_real_escape_string($_GET['route']);
+$route=mysql_real_escape_string($_POST['route']);
 
-//$route=mysql_real_escape_string($_POST['route']);
-//$result=$route."haha";
-
-/* SELECT stations.name,stations.abbr,stations.slan,stations.slong,routes.color,routes.name
- * FROM stations,routes,rtstn
- * WHERE stations.id=rtstn.rtid
- * AND rtstn.rtid=routes.id
- * AND rtstn.rtid='{$route}';
- */
-/*$stmt=$db->prepare("SELECT stations.name,stations.abbr,stations.slan,stations.slong,routes.color,routes.name
+$stmt=$db->prepare("SELECT stations.name as stname,stations.abbr,stations.slan,stations.slong,
+                    routes.color,routes.name as rtname
                     FROM stations,routes,rtstn
-                    WHERE stations.id=rtstn.stnid AND rtstn.rtid=routes.id AND rtstn.rtid='{$route}'");
-//$stmt->bindValue(':route',$route,SQLITE3_INTEGER);
+                    WHERE stations.id=rtstn.stnid AND rtstn.rtid=routes.id AND rtstn.rtid=:route");
+
+$stmt->bindValue(':route',$route,SQLITE3_INTEGER);
 $result=$stmt->execute();
-*/
-
-$result=$db->query("SELECT stations.name,stations.abbr,stations.slan,stations.slong,routes.color,routes.name
-                    FROM stations,routes,rtstn
-                    WHERE stations.id=rtstn.stnid AND rtstn.rtid=routes.id AND rtstn.rtid='{$route}'");
-
-//$stmt->bindValue(':route',$route,SQLITE3_INTEGER);
-//$result=$stmt->execute();
 
 while($row=$result->fetchArray(SQLITE3_ASSOC)) {
-  echo "<pre>";
-  print(json_encode($row));
-  echo "</pre>";
+
+  //echo "<pre>";
+  //print_r($row);
+  //echo "</pre>";
+  $routeinfo->route['name']=$row['rtname'];
+  $routeinfo->route['color']=$row['color'];
+  $routeinfo->station[$row['abbr']]['name']=$row['stname'];
+  $routeinfo->station[$row['abbr']]['slat']=$row['slan'];  
+  $routeinfo->station[$row['abbr']]['slong']=$row['slong'];
 }
-//print(json_encode($result));
+//echo "<pre>";
+print(json_encode($routeinfo));
+//print_r($routeinfo);
+//echo "</pre>";
 
 ?>

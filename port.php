@@ -57,31 +57,28 @@ foreach($route as $route)
 
   }
 */
+$stations=new SimpleXMLElement(file_get_contents("Stations.xml"));
+$station=$stations->xpath("//station[abbr='SFIA']");
 
-/*$stations=new SimpleXMLElement(file_get_contents("Stations.xml"));
-$station=$stations->xpath('//station');
 $db=new Sqlite3('bart.db');
+
 foreach($station as $station)
   {
-    $name=$station->name;
-    $abbr=$station->abbr;
-    $lan=$station->gtfs_latitude;
-    $lon=$station->gtfs_longitude;
-    $db->exec('delete from stations where id>43');
+    /* echo "<pre>";
+     * print_r($station[0]);
+     * echo "</pre>";
+     */
+    
+    $name=$station[0]->name;
+    $abbr=$station[0]->abbr;
+    $lan=$station[0]->gtfs_latitude;
+    $lon=$station[0]->gtfs_longitude;
 
-
-    //    $db->exec("insert into stations(name,abbr,slan,slong) VALUES('{$name}','{$abbr}','{$lan}','{$long}')");
-
-
-    //    $db->exec("INSERT INTO stations(name,abbr,slan,slong) VALUES('{$name}','{$abbr}','{$lan}','{$lon}')");
-
-
-      echo "<br/><pre>";
-    print_r($station);
-    echo "<br/></pre>";
-  
-
+    $db->exec("INSERT INTO stations(name,abbr,slan,slong) VALUES('{$name}','{$abbr}','{$lan}','{$lon}')");    
   }
 
-*/
+    //      echo "<br/><pre>";
+    //    print_r($station);
+    //    echo "<br/></pre>";
+
 ?>

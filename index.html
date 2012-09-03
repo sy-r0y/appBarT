@@ -4,7 +4,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
   <link rel="stylesheet" type="text/css" href="styles.css" />
   <title>BART-GoogleMap MAshUP</title>
-  <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+  <script type="text/javascript" src="js/jquery-1.8.0.js"></script>
   <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
   <script>
     function init()
@@ -20,55 +20,72 @@
              mapTypeControl:true
     };
     var map=new google.maps.Map(elem,opt);
-    var mark1=new google.maps.LatLng(37.752254,-122.418466);
-    var mark2=new google.maps.LatLng(37.765062,-122.419694);
-    var mark3=new google.maps.LatLng(37.803664,-122.271604);
-    var marker=new google.maps.Marker({position:mark1,title:'24th, Street Mission',map:map});
-    var marker2=new google.maps.Marker({
-                  position:mark2,
-                  title:'16th, Street Mission',
-                  map:map
-    });
-    var marker3=new google.maps.Marker({
-                  position:mark3,title:'as',map:map
-    });
-    var infowindow=new google.maps.InfoWindow({content:'24th, Street Mission, BART'});
-    var infowindow2=new google.maps.InfoWindow({
-                  content:'16th, Street Mission'
-    });
-    var route=[
-        mark1,mark2,mark3
-    ];
-    var path=new google.maps.Polyline({
-      path:route,
-      strokeColor:"#FF0000",
-      strokeOpacity:1.0,
-      strokeweight:2
-    });
-    path.setMap(map);
-    google.maps.event.addListener(marker,'mouseover',function(){infowindow.open(map,marker);});
-    google.maps.event.addListener(marker,'mouseout',function(){infowindow.close();});
-    google.maps.event.addListener(
-                      marker2,'mouseover',function(){infowindow2.open(map,marker2);}
-    )
-    google.maps.event.addListener(marker2,'mouseout',function(){infowindow2.close();});
-}
-    function getRoute(route){ 
+/*    var mark1=new google.maps.LatLng(37.752254,-122.418466);
+ *    var mark2=new google.maps.LatLng(37.765062,-122.419694);
+ *    var mark3=new google.maps.LatLng(37.803664,-122.271604);
+ *    var marker=new google.maps.Marker({position:mark1,title:'24th, Street Mission',map:map});
+ *    var marker2=new google.maps.Marker({
+ *                  position:mark2,
+ *                  title:'16th, Street Mission',
+ *                  map:map
+ *    });
+ *    var marker3=new google.maps.Marker({
+ *                  position:mark3,title:'as',map:map
+ *    });
+ *    var infowindow=new google.maps.InfoWindow({content:'24th, Street Mission, BART'});
+ *    var infowindow2=new google.maps.InfoWindow({
+ *                  content:'16th, Street Mission'
+ *    });
+ *    var route=[
+ *        mark1,mark2,mark3
+ *    ];
+ *    var path=new google.maps.Polyline({
+ *      path:route,
+ *     strokeColor:"#FF0000",
+ *      strokeOpacity:1.0,
+ *     strokeweight:2
+ *    });
+ *    path.setMap(map);
+ *    google.maps.event.addListener(marker,'mouseover',function(){infowindow.open(map,marker);});
+ *    google.maps.event.addListener(marker,'mouseout',function(){infowindow.close();});
+ *    google.maps.event.addListener(
+ *                      marker2,'mouseover',function(){infowindow2.open(map,marker2);}
+ *    )
+ *    google.maps.event.addListener(marker2,'mouseout',function(){infowindow2.close();});
+*/
+
+} //init() Ends here.
+
+/* For getRoute():-
+*  Receive the route number from the user.
+ * Do sanity check.
+ * If pass, send the route number to getroute.php via an AJAX call(using jQuery).
+ * Receive the JSON response, parse it. 
+ * Add the station overlays onto the map.
+ * Change the center to the first station.
+ */
+
+function getRoute(route){ 
     $(document).ready(function(){
-    /* Receive the route number from the user.
-     * Do sanity check.
-     * If pass, send the route number to getroute.php via an AJAX call(using jQuery).
-     * Receive the JSON response, parse it. 
-     * Add the station overlays onto the map.
-     * Change the center to the first station.
-    */
-    if(route==""){ return false; }
-    $.post("getroute.php",{route:route},function(o) {
-    alert("inside getroute handler"+o);
+     if(route==""){ return false; }
+     $.post("getroute.php",{route:route},function(result) {
+
+     var response=eval("("+result.responseText+")");
+     
+     
+
+
+    //      var obj = $.parseJSON(result);
+    //      console.log(result.abbr);
+    //      $.each(obj,function()  {
+//      alert(this['slat']);
+//    });
+
     },"json");
-});
-}
-  </script>
+    });
+} //getRoute() Ends here.
+
+</script>
 </head>
 <body onload="init();">
   <div  id="wrapper">

@@ -400,7 +400,7 @@
       <zipcode>94066</zipcode>
     </station>
     <station>
-      <name>San Francisco Int'l Airport</name>
+      <name>San Francisco Intl Airport</name>
       <abbr>SFIA</abbr>
       <gtfs_latitude>37.616035</gtfs_latitude>
       <gtfs_longitude>-122.392612</gtfs_longitude>
