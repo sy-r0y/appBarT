@@ -20,10 +20,8 @@
              mapTypeControl:true
     };
     var map=new google.maps.Map(elem,opt);
-/*    var mark1=new google.maps.LatLng(37.752254,-122.418466);
- *    var mark2=new google.maps.LatLng(37.765062,-122.419694);
- *    var mark3=new google.maps.LatLng(37.803664,-122.271604);
- *    var marker=new google.maps.Marker({position:mark1,title:'24th, Street Mission',map:map});
+
+/*    var marker=new google.maps.Marker({position:mark1,title:'24th, Street Mission',map:map});
  *    var marker2=new google.maps.Marker({
  *                  position:mark2,
  *                  title:'16th, Street Mission',
@@ -54,37 +52,40 @@
  *    google.maps.event.addListener(marker2,'mouseout',function(){infowindow2.close();});
 */
 
-} //init() Ends here.
+} //init ends here.
 
 /* For getRoute():-
 *  Receive the route number from the user.
- * Do sanity check.
- * If pass, send the route number to getroute.php via an AJAX call(using jQuery).
- * Receive the JSON response, parse it. 
- * Add the station overlays onto the map.
- * Change the center to the first station.
- */
-
-function getRoute(route){ 
-    $(document).ready(function(){
-     if(route==""){ return false; }
-     $.post("getroute.php",{route:route},function(result) {
-
-     var response=eval("("+result.responseText+")");
-     
-     
-
-
-    //      var obj = $.parseJSON(result);
-    //      console.log(result.abbr);
-    //      $.each(obj,function()  {
-//      alert(this['slat']);
-//    });
-
-    },"json");
-    });
-} //getRoute() Ends here.
-
+* Do sanity check.
+* If pass, send the route number to getroute.php via an AJAX call(using jQuery).
+* Receive the JSON response, parse it. 
+* Add the station overlays onto the map.
+* Change the center to the first station.
+*/
+function getRoute(routenum) {
+    $(document).ready(function() {
+      if(routenum=='') { return false; }
+      $.getJSON('getroute.php',{route:routenum},function(data) {
+    
+        $.each(data,function(key,value) {
+          if(key=='station') { 
+            $.each(this,function(k,v) {
+              //console.log("Key:- "+k);
+                $.each(this,function(k2,v2) {
+                console.log("[Original Key:- "+k+"][K2:- "+k2+"]- V2:-"+v2);
+                });
+            });
+          }
+          if(key=='route') { 
+            alert("Key Route.");
+            $.each(this,function(k,v) {
+              console.log(k+" : "+v);
+            });
+         }
+        }); //$.each
+      }); //$.getJSON
+    });//$(document)
+}
 </script>
 </head>
 <body onload="init();">

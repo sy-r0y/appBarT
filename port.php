@@ -57,17 +57,17 @@ foreach($route as $route)
 
   }
 */
-$stations=new SimpleXMLElement(file_get_contents("Stations.xml"));
+/*$stations=new SimpleXMLElement(file_get_contents("Stations.xml"));
 $station=$stations->xpath("//station[abbr='SFIA']");
 
 $db=new Sqlite3('bart.db');
 
 foreach($station as $station)
   {
-    /* echo "<pre>";
+     * echo "<pre>";
      * print_r($station[0]);
      * echo "</pre>";
-     */
+     
     
     $name=$station[0]->name;
     $abbr=$station[0]->abbr;
@@ -81,4 +81,5 @@ foreach($station as $station)
     //    print_r($station);
     //    echo "<br/></pre>";
 
+*/
 ?>

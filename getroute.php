@@ -12,11 +12,10 @@ class RouteInfo {
   public $route=array();
 }
 $routeinfo=new RouteInfo();
-
 header("Content-type:application/json");
 $db=new SQLite3('bart.db');
-//$route=mysql_real_escape_string($_GET['route']);
-$route=mysql_real_escape_string($_POST['route']);
+$route=mysql_real_escape_string($_GET['route']);
+//$route=mysql_real_escape_string($_POST['route']);
 
 $stmt=$db->prepare("SELECT stations.name as stname,stations.abbr,stations.slan,stations.slong,
                     routes.color,routes.name as rtname
