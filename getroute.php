@@ -1,5 +1,4 @@
 <?php
-
 /* Get the route number from getRoute().
  * Receive the "route" value via AJAX call from getroute() in index.html
  * Sanitize it.
@@ -8,8 +7,8 @@
  */
 class RouteInfo {
   //public $noerror=false;
-  public $station=array();
   public $route=array();
+  public $station=array();
 }
 $routeinfo=new RouteInfo();
 header("Content-type:application/json");
@@ -36,8 +35,8 @@ while($row=$result->fetchArray(SQLITE3_ASSOC)) {
   $routeinfo->station[$row['abbr']]['slat']=$row['slan'];  
   $routeinfo->station[$row['abbr']]['slong']=$row['slong'];
 }
-//echo "<pre>";
 print(json_encode($routeinfo));
+//echo "<pre>";
 //print_r($routeinfo);
 //echo "</pre>";
 
