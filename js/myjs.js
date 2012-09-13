@@ -1,22 +1,11 @@
-/*
-'<div id="content">
-                      <div id="stn" style="position:absolute;">Station: '+name+'</div>
-                      <br/>
-                      <div style="background-color:'+Clr+';float:left;">Route: '+Rt+'</div>
-                      <div id="arrdep" style="float:right;">
-                        <table style="width:100%;border:0px;">
-                          <thead>Arrival-Departure</thead><tr><td></td></tr>
-                        </table>
-                      </div>
-                    </div>';
-*/
-
-/******************************************/
 var map;
+var poly;
 var stations=[];
-var polyRoute=[];
+//var route=[];
 var Rt;
 var Clr;
+//var prepath=null;
+
 function init()
 {
     var elem=document.getElementById('canvas_map');
@@ -34,30 +23,51 @@ function init()
 
 function draw(lat,lon,name) 
 {
-/* Will draw the new station markers onto the map.
- * Will create the info windows for the markers(stations).
- * Will draw the polyline along the stations for showing the route map.
- */ 
-
-//    console.log("Lat: "+lat+", Lon: "+lon+", Name: "+name);
+    /* Will draw the new station markers onto the map.
+     * Will create the info windows for the markers(stations).
+     * Will draw the polyline along the stations for showing the route map.
+     */ 
+    
+    var route=[];
+    route.push(new google.maps.LatLng(lat,lon));
     var mark=new google.maps.Marker({
-	position:new google.maps.LatLng(lat,lon),
+	position:route,
 	title:name,
 	clickable:true,
 	map:map
     });
     stations.push(mark);
-    polyRoute.push(lat,lon);
-    var strContent='<div id="content" style="width:300px;height:100px;"><div id="stn" style="font-weight:bold;margin:auto;padding:2px;">Station: '+name+'</div><br/><div id="route" style="margin-top:0.5em;padding:2px;background-color:'+Clr+';float:left;font-size:0.8em;font-weight:bold">Route: '+Rt+'</div><div id="arrdep" style="margin-left:2px;float:right;"><table style="border:0px;"><thead>Arrival-Departure</thead><tr><td></td></tr></table></div></div>';
+    drawinfo(mark);
+    drawpoly(route);
+}
 
+function drawinfo(mark) {
+    var strContent='<div id="content" style="width:300px;height:100px;"><div id="stn" style="font-weight:bold;margin:auto;padding:2px;">Station: '+this.name+'</div><br/><div id="route" style="margin-top:0.5em;padding:2px;background-color:'+this.Clr+';float:left;font-size:0.8em;font-weight:bold">Route: '+this.Rt+'</div><div id="arrdep" style="margin-left:2px;float:right;"><table style="border:0px;"><thead>Arrival-Departure</thead><tr><td></td></tr></table></div></div>';
 
     var infowindow=new google.maps.InfoWindow({
 	content:strContent
     });
-    google.maps.event.addListener(mark,'click',function(){infowindow.open(map,mark);});
-
-    return false;
+    google.maps.event.addListener(this.mark,'click',function(){infowindow.open(map,this.mark);});
 }
+function drawpoly() {
+//    var route=[];
+    if(poly) {
+	poly.setPath(polyoptions);
+    }
+    else {
+	polyoptions={
+	    path:route,
+	    strokeColor:Clr,
+	    strokeWeight:10,
+	    strokeOpacity:1.0
+	};
+	poly=new google.maps.Polyline(polyoptions);
+
+	poly.setMap(map);
+//	return false;
+    }
+}
+
 function clearOverlays() {
     for(var i=0;i<stations.length;i++) {
 	stations[i].setMap(null); //Take the station markers one by one and clear them.
@@ -75,6 +85,7 @@ function clearOverlays() {
  */
 function getRoute(routenum) { 
     clearOverlays();
+//    clearRoute();
     var stn;
     $(document).ready(function() {
 	var marker;var lat;var lon;var name;
