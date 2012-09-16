@@ -13,8 +13,34 @@ GENERAL BART TODO:-
 - For the dynamic information about departure, arrival etc query the Real BART API.
 - Display all this data into the marker's info window.
 
+
 ---------------------------------
 
+<<STATUS : Not Done >>
+<DEFCON-4> NEXT TODO:-
+****** Pull all the train running information using BART API & show it in the infowindows ******
+DEADLINE: 24th September
+CODE FREEZE: 24th September
+
+---------------------------------
+
+<<STATUS : DONE >>
+<DEFCON-4> NEXT TODO:-
+****** Implement the polylines for showing the route ******
+DEADLINE: 15th September
+CODE FREEZE: 16th September
+
+---------------------------------
+
+<<STATUS : DONE >>
+<DEFCON-4> NEXT TODO:-
+****** Implement all the station markers and infowindows ******
+DEADLINE: 10th September
+CODE FREEZE: 10th September
+
+---------------------------------
+
+<<STATUS : DONE >>
 <DEFCON-3> NEXT TODO:-
 ****** Implement the getroute.php module to get the station information ******
 DEADLINE: 30th August
