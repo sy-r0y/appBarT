@@ -5,9 +5,10 @@ var route=[];
 var Rt;
 var Clr;
 var polyroute;
+var infowindow=new google.maps.InfoWindow();
+
 function init()
 {
-    alert("1. INSIDE init()");
     var elem=document.getElementById('canvas_map');
     var latlng=new google.maps.LatLng(37.752254,-122.418466);
     var opt={zoom:13,
@@ -34,15 +35,16 @@ function draw(lat,lon,name)
     });
     stations.push(mark);
     drawinfo(mark,name);	  
+    drawpoly();
 }
-
 function drawinfo(mark,name) {
     var strContent='<div id="content" style="width:300px;height:100px;"><div id="stn" style="font-weight:bold;margin:auto;padding:2px;">Station: '+this.name+'</div><br/><div id="route" style="margin-top:0.5em;padding:2px;background-color:'+Clr+';float:left;font-size:0.8em;font-weight:bold">Route: '+Rt+'</div><div id="arrdep" style="margin-left:2px;float:right;"><table style="border:0px;"><thead>Arrival-Departure</thead><tr><td></td></tr></table></div></div>';
 
-    var infowindow=new google.maps.InfoWindow({
-	content:strContent
+    google.maps.event.addListener(mark,'click',function(){
+	infowindow.close();
+	infowindow.setContent(strContent);
+	infowindow.open(map,mark);
     });
-    google.maps.event.addListener(mark,'click',function(){infowindow.open(map,mark);});
 }
 function drawpoly() {
     var polyoptions={
@@ -77,7 +79,6 @@ function clearOverlays() {
  * Change the center to the first station.
  */
 function getRoute(routenum) { 
-    alert("2. INSIDE getRoute()");
     clearOverlays();
     var stn;
     $(document).ready(function() {
@@ -86,14 +87,12 @@ function getRoute(routenum) {
 	$.getJSON('getroute.php',{route:routenum},function(data) {
             $.each(data,function(key,value) {
 		if(key=='route') { 
-		    alert("Key: Route.");
 		    $.each(this,function(k,v) {
 			if(k=='name'){Rt=v;}
 			if(k=='color'){Clr=v;}
 		    }); 
 		}
 		if(key=='station') { 
-		    alert("Key: Station");
 		    $.each(this,function(k,v) {
 			//console.log("Key:- "+k);
 			$.each(this,function(k2,v2) {
@@ -102,7 +101,6 @@ function getRoute(routenum) {
 			    if(k2=='slong'){ lon=v2; }
 			});
 			draw(lat,lon,name);
-			drawpoly();
 //			console.log("Lat:- "+lat+", Lon:- "+lon+", Name:- "+name);
 		    });
 		}
