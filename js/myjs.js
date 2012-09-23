@@ -22,7 +22,7 @@ function init()
     map=new google.maps.Map(elem,opt);
 } //init ends here.
 
-function draw(lat,lon,name) 
+function draw(lat,lon,abbr,name) 
 {
 //    console.log("Lat:- "+lat+", Lon:- "+lon+", Name:- "+name+"Color:- "+Clr+" Route:- "+Rt);
     route.push(new google.maps.LatLng(lat,lon));
@@ -34,14 +34,21 @@ function draw(lat,lon,name)
 	map:map
     });
     stations.push(mark);
-    drawinfo(mark,name);	  
+    drawinfo(mark,abbr,name);	  
     drawpoly();
 }
-function drawinfo(mark,name) {
-    var strContent='<div id="content" style="width:300px;height:100px;"><div id="stn" style="font-weight:bold;margin:auto;padding:2px;">Station: '+this.name+'</div><br/><div id="route" style="margin-top:0.5em;padding:2px;background-color:'+Clr+';float:left;font-size:0.8em;font-weight:bold">Route: '+Rt+'</div><div id="arrdep" style="margin-left:2px;float:right;"><table style="border:0px;"><thead>Arrival-Departure</thead><tr><td></td></tr></table></div></div>';
+function drawinfo(mark,abbr,name) {
+//    console.log("Station: "+abbr);
+
+    $.getJSON("getetd.php",{abbr:abbr},function(result) {
+    }); //getJSON ends.
+
+    var strContent='<div id="content" style="width:300px;height:100px;"><div id="stn" style="font-weight:bold;margin:auto;padding:2px;"><p>Station: '+name+'</p></div><br/><div id="route" style="margin-top:0.5em;padding:2px;background-color:'+Clr+';float:left;font-size:0.8em;font-weight:bold">Route: '+Rt+'</div><div id="arrdep" style="margin-left:2px;float:right;"><table style="border:0px;"><thead>Departure</thead><tr><td></td></tr></table></div></div>';
 
     google.maps.event.addListener(mark,'click',function(){
 	infowindow.close();
+//	alert("KEY:- "+stn);
+//	$.getJSON("getetd.php",{abbr:
 	infowindow.setContent(strContent);
 	infowindow.open(map,mark);
     });
@@ -80,9 +87,8 @@ function clearOverlays() {
  */
 function getRoute(routenum) { 
     clearOverlays();
-    var stn;
     $(document).ready(function() {
-	var lat;var lon;var name;
+	var lat;var lon;var name;var abbr;
 	if(routenum=='') { return false; }
 	$.getJSON('getroute.php',{route:routenum},function(data) {
             $.each(data,function(key,value) {
@@ -94,13 +100,14 @@ function getRoute(routenum) {
 		}
 		if(key=='station') { 
 		    $.each(this,function(k,v) {
-			//console.log("Key:- "+k);
+			abbr=k;
+//			console.log("Key:- "+abbr);
 			$.each(this,function(k2,v2) {
 			    if(k2=='name'){ name=v2; }
 			    if(k2=='slat'){ lat=v2; }
 			    if(k2=='slong'){ lon=v2; }
 			});
-			draw(lat,lon,name);
+			draw(lat,lon,abbr,name);
 //			console.log("Lat:- "+lat+", Lon:- "+lon+", Name:- "+name);
 		    });
 		}
