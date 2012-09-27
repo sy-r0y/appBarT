@@ -19,16 +19,7 @@ $result=$xml->xpath('//etd');
  * $etd['RICH'][1]=15
  * $etd['RICH'][2]=30
  */
-/*
- * Start outer loop(get destination).
- * Declare counter=0
- * dest=Destination.
- * start inner loop for every estimates on that DEST.
- * For the current DEST & counter, assign the minute value.
- * Increase counter by 1.
- * Close the inner loop.
- * Close Outer Loop.
- */
+
 foreach($result as $result) {
   //  echo $result->destination.": ".$result->abbreviation;
   $dest=$result->destination;
@@ -39,11 +30,50 @@ foreach($result as $result) {
     //    echo $estimate->minutes."  ".$estimate->direction." <br/> "; 
   }
 }
+
 print(json_encode($obj));
 
 /*
  * echo "<pre>";
  * print_r($obj->etd);
  * echo "</pre>";
+
 */
+/*
+ {
+     "etd":{
+            "Dublin\/Pleasanton":[
+	              {"0":"Leaving"},
+		      {"0":"4"},
+		      {"0":"19"}
+		      ],
+	    "Fremont":[
+	              {"0":"11"},
+		      {"0":"26"},
+		      {"0":"41"}
+	              ],
+	    "Millbrae":[
+	               {"0":"3"},
+		       {"0":"28"},
+		       {"0":"34"}
+		       ],
+	    "Pittsburg\/Bay Point":[
+	               {"0":"7"},
+		       {"0":"22"},
+		       {"0":"37"}
+		       ],
+	    "Richmond":[
+	               {"0":"14"},
+		       {"0":"30"},
+		       {"0":"45"}
+		       ],
+	    "SF Airport":[
+	               {"0":"11"},
+		       {"0":"30"},
+		       {"0":"42"}
+		       ]
+	}
+ }
+ */
+
 ?>

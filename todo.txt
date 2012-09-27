@@ -16,7 +16,7 @@ GENERAL BART TODO:-
 
 ---------------------------------
 
-<<STATUS : Not Done >>
+<<STATUS : DONE >>
 <DEFCON-4> NEXT TODO:-
 ****** Pull all the train running information using BART API & show it in the infowindows ******
 DEADLINE: 24th September
