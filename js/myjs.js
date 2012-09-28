@@ -25,9 +25,6 @@ function init()
 function draw(lat,lon,abbr,name)
 {
 //    console.log("Lat:- "+lat+", Lon:- "+lon+", Name:- "+name+"Color:- "+Clr+" Route:- "+Rt);
-    var content='<div style="width:400px;"><div>Station: '+name+'</div>';
-    content+='<div style="margin-top:12%;float:left;background-color:'+Clr+'">'+Rt+'</div>';
-    content+='<div style="float:right;"><table style="border:0;font-weight:bold;"><tr><td>Departures<span style="font-size:0.6em;">(in Mins)</span></td></tr>';
     route.push(new google.maps.LatLng(lat,lon));
     var mark=new google.maps.Marker({
 	position:new google.maps.LatLng(lat,lon),
@@ -39,6 +36,10 @@ function draw(lat,lon,abbr,name)
     google.maps.event.addListener(mark,'click',function() {
 	infowindow.setContent(null);
 	infowindow.close();
+	var content='<div style="width:400px;"><div>Station: '+name+'</div>';
+	content+='<div style="margin-top:12%;float:left;background-color:'+Clr+'">'+Rt+'</div>';
+	content+='<div style="float:right;"><table style="border:0;font-weight:bold;"><tr><td>Departures<span style="font-size:0.6em;">(in Mins)</span></td></tr>';
+	
 	$.ajaxSetup({async:false}); /* To ensure, the DOM is not altered until data is at hand(otherwise                                             * setContent() gets called withouth any data at hand, which then overflows.
 				     */
 	$.getJSON("getetd.php",{abbr:abbr},function(result) {
