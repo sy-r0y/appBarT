@@ -1,12 +1,6 @@
-var map;
-var poly=[];
-var stations=[];
-var route=[];
-var Rt;
-var Clr;
-var polyroute;
+var map;var Rt;var Clr;var polyroute;
+var poly=[];var stations=[];var route=[];
 var infowindow=new google.maps.InfoWindow();
-
 function init()
 {
     var elem=document.getElementById('canvas_map');
@@ -33,6 +27,10 @@ function draw(lat,lon,abbr,name)
 	map:map
     });
     stations.push(mark);
+    drawinfo(abbr,name,mark);
+    drawpoly();
+}
+function drawinfo(abbr,name,mark) {
     google.maps.event.addListener(mark,'click',function() {
 	infowindow.setContent(null);
 	infowindow.close();
@@ -50,7 +48,6 @@ function draw(lat,lon,abbr,name)
 		    $.each(this,function(k2,v2) {
 			$.each(this,function(k3,v3) {
  			    content+='<td>'+v3+'</td>';
-			    
 			});
 		    });
 		    content+='</tr>';
@@ -61,7 +58,6 @@ function draw(lat,lon,abbr,name)
 	infowindow.setContent(content);
 	infowindow.open(map,mark);
     }); //addListener() Ends.
-    drawpoly();
 }
 function drawpoly() {
     var polyoptions={
