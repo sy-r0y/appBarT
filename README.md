@@ -1,4 +1,4 @@
-
+Built an app similar to this, for a client. The code here is copyright-free and can be modified in any way.
 
 A cool application that :- 
   - Utillizes APIs provided by San Francisco's transit system- Bay Area Rapid Transit(http://bart.gov/schedules/developers/),
